@@ -86,20 +86,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         Fragment fragment = null;
 
-        switch (item.getItemId()) {
-            case R.id.nav_menu_home:
-                fragment = new HomeFragment();
-                break;
-            case R.id.nav_menu_search:
-                fragment = new SearchFragment();
-                break;
-            case R.id.nav_menu_notification:
-                fragment = new NotificationFragment();
-                break;
-            case R.id.nav_menu_message:
-                fragment = new MessageFragment();
-                break;
+        if (item.getItemId() == R.id.nav_menu_home) {
+            fragment = new HomeFragment();
+        } else if (item.getItemId() == R.id.nav_menu_search) {
+            fragment = new SearchFragment();
+        } else if (item.getItemId() == R.id.nav_menu_notification) {
+            fragment = new NotificationFragment();
+        } else if (item.getItemId() == R.id.nav_menu_message) {
+            fragment = new MessageFragment();
         }
+
         return loadFragment(fragment);
     }
 
@@ -110,20 +106,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_my_account:
-                        Pesan("My Account");
-                        break;
-                    case R.id.nav_support:
-                        Pesan("Support");
-                        break;
-                    case R.id.nav_setting:
-                        Pesan("Setting");
-                        break;
-                    case R.id.nav_help:
-                        Pesan("Help");
-                        break;
+                int itemId = item.getItemId();
+
+                if (itemId == R.id.nav_my_account) {
+                    Pesan("My Account");
+                } else if (itemId == R.id.nav_support) {
+                    Pesan("Support");
+                } else if (itemId == R.id.nav_setting) {
+                    Pesan("Setting");
+                } else if (itemId == R.id.nav_help) {
+                    Pesan("Help");
                 }
+
 
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);

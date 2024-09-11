@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.project.laundryappui">
 
+    <!-- Required Permissions -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
@@ -12,14 +14,25 @@
         android:roundIcon="@drawable/ic_laundry"
         android:supportsRtl="true"
         android:theme="@style/Theme.LaundryAppUI.NoActionBar">
+
+        <!-- Disable androidx.startup -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
+
+        <!-- Activity for Home Detail -->
         <activity android:name=".menu.home.home_detail.HomeDetailActivity" />
-        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustPan">
+
+        <!-- MainActivity with android:exported set to true -->
+        <activity android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+    </application>
 </manifest>

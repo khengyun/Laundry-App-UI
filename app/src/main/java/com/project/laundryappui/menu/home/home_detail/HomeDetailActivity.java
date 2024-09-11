@@ -18,8 +18,11 @@ public class HomeDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hideStatusBar();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home_detail);
+
 
         buttonBack = findViewById(R.id.button_back);
         buttonBack.setOnClickListener(view -> onBackPressed());
